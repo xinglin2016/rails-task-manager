@@ -1,6 +1,14 @@
 <%= simple_form_for(task) do |t| %>
-  <%= t.input :title %>
-  <%= t.input :details %>
-  <%= t.input :completed %>
-  <%= t.button :submit %>
+  <div class="form-group">
+    <%= t.input :title %>
+    <%= t.input :details %>
+  </div>
+  <% unless t.object.new_record? %>
+    <div class="checkbox">
+      <label>
+        <%= t.check_box :completed %> Completed
+      </label>
+    </div>
+  <% end %>
+  <%= t.submit class: 'btn btn-primary' %>
 <% end %>
